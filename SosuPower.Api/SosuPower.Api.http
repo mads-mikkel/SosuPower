@@ -1,0 +1,6 @@
+@SosuPower.Api_HostAddress = http://localhost:5159
+
+GET {{SosuPower.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
