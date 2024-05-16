@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SosuPower.Entities", "SosuPower.Entities\SosuPower.Entities.csproj", "{17F3EF89-6E1C-4AF7-9FD0-85609F42F73F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SosuPower.Entities", "SosuPower.Entities\SosuPower.Entities.csproj", "{17F3EF89-6E1C-4AF7-9FD0-85609F42F73F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SosuPower.Api", "SosuPower.Api\SosuPower.Api.csproj", "{BB876743-3A81-4C3D-947D-5D860D2D18D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SosuPower.Api", "SosuPower.Api\SosuPower.Api.csproj", "{BB876743-3A81-4C3D-947D-5D860D2D18D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SosuPower.DataAccess", "SosuPower.DataAccess\SosuPower.DataAccess.csproj", "{C5BE596D-D7E3-4549-AB36-857B363823EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BB876743-3A81-4C3D-947D-5D860D2D18D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB876743-3A81-4C3D-947D-5D860D2D18D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB876743-3A81-4C3D-947D-5D860D2D18D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5BE596D-D7E3-4549-AB36-857B363823EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5BE596D-D7E3-4549-AB36-857B363823EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5BE596D-D7E3-4549-AB36-857B363823EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5BE596D-D7E3-4549-AB36-857B363823EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

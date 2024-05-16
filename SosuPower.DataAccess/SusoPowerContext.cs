@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace SosuPower.Entities
+using SosuPower.Entities;
+
+namespace SosuPower.DataAccess
 {
     public class SosuPowerContext: DbContext
     {
@@ -18,6 +20,6 @@ namespace SosuPower.Entities
         }
 
         DbSet<Employee> Employees { get; set; }
-        DbSet<Task> Tasks { get; set; }
+        DbSet<Entities.Task> Tasks { get; set; }
     }
 }
