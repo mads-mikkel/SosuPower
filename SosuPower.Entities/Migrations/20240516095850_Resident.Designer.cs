@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuPower.Entities;
 
@@ -11,9 +12,11 @@ using SosuPower.Entities;
 namespace SosuPower.Entities.Migrations
 {
     [DbContext(typeof(SosuPowerContext))]
-    partial class SosuPowerContextModelSnapshot : ModelSnapshot
+    [Migration("20240516095850_Resident")]
+    partial class Resident
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
