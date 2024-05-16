@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SosuPower.Entities;
+using SosuPower.DataAccess;
 
 #nullable disable
 
-namespace SosuPower.Entities.Migrations
+namespace SosuPower.DataAccess.Migrations
 {
     [DbContext(typeof(SosuPowerContext))]
-    [Migration("20240516095850_Resident")]
-    partial class Resident
+    [Migration("20240516111805_ResidentBirthDate")]
+    partial class ResidentBirthDate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,9 @@ namespace SosuPower.Entities.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()

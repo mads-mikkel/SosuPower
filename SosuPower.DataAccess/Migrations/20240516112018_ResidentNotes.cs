@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace SosuPower.Entities.Migrations
+namespace SosuPower.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class WithoutConfogManyToMany : Migration
+    public partial class ResidentNotes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

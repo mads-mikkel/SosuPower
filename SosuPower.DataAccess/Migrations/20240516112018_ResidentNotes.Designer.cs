@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SosuPower.Entities;
+using SosuPower.DataAccess;
 
 #nullable disable
 
-namespace SosuPower.Entities.Migrations
+namespace SosuPower.DataAccess.Migrations
 {
     [DbContext(typeof(SosuPowerContext))]
-    [Migration("20240516094817_Tasks")]
-    partial class Tasks
+    [Migration("20240516112018_ResidentNotes")]
+    partial class ResidentNotes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,30 @@ namespace SosuPower.Entities.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("SosuPower.Entities.Resident", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoomNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Resident");
+                });
+
             modelBuilder.Entity("SosuPower.Entities.Task", b =>
                 {
                     b.Property<int>("Id")
@@ -72,6 +96,9 @@ namespace SosuPower.Entities.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ResidentId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -80,6 +107,8 @@ namespace SosuPower.Entities.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResidentId");
 
                     b.ToTable("Tasks");
                 });
@@ -97,6 +126,17 @@ namespace SosuPower.Entities.Migrations
                         .HasForeignKey("TasksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SosuPower.Entities.Task", b =>
+                {
+                    b.HasOne("SosuPower.Entities.Resident", "Resident")
+                        .WithMany()
+                        .HasForeignKey("ResidentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resident");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SosuPower.Entities;
+using SosuPower.DataAccess;
 
 #nullable disable
 
-namespace SosuPower.Entities.Migrations
+namespace SosuPower.DataAccess.Migrations
 {
     [DbContext(typeof(SosuPowerContext))]
     partial class SosuPowerContextModelSnapshot : ModelSnapshot
@@ -61,6 +61,9 @@ namespace SosuPower.Entities.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
