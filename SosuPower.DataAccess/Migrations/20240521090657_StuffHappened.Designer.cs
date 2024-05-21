@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuPower.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuPower.DataAccess;
 namespace SosuPower.DataAccess.Migrations
 {
     [DbContext(typeof(SosuPowerContext))]
-    partial class SosuPowerContextModelSnapshot : ModelSnapshot
+    [Migration("20240521090657_StuffHappened")]
+    partial class StuffHappened
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace SosuPower.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Residents");
+                    b.ToTable("Resident");
                 });
 
             modelBuilder.Entity("SosuPower.Entities.Task", b =>
