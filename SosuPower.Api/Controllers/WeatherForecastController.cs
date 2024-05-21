@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+using SosuPower.DataAccess;
 
 namespace SosuPower.Api.Controllers
 {
@@ -19,15 +22,15 @@ namespace SosuPower.Api.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<Entities.Task> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            SosuPowerContext sosuPowerContext = new();
+            List<Entities.Task> tasks = 
+                sosuPowerContext.Tasks
+                .Include(t => t.Employees)
+                .Where(t => t.StartTime >= DateTime.Now && t.EndTime <= DateTime.Now.AddHours(2))
+                .ToList();
+            return tasks;
         }
     }
 }

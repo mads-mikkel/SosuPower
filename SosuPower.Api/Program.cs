@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using SosuPower.DataAccess;
+using SosuPower.Entities;
 
 namespace SosuPower.Api
 {
