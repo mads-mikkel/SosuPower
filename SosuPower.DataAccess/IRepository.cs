@@ -32,12 +32,13 @@ namespace SosuPower.DataAccess
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            sosuPowerContext.Remove(entity);
+            sosuPowerContext.SaveChanges();
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return sosuPowerContext.Set<T>().ToList();
         }
 
         public T GetBy(int id)
@@ -47,7 +48,7 @@ namespace SosuPower.DataAccess
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            sosuPowerContext.Update(entity);
         }
     }
 }
