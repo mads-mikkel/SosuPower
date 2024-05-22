@@ -18,7 +18,7 @@ namespace SosuPower.DataAccess
         }
 
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Entities.Task> Tasks { get; set; }
+        public DbSet<Entities.Assignment> Tasks { get; set; }
         public DbSet<Resident> Residents { get; set; }  
     }
 }

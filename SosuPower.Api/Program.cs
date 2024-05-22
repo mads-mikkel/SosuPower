@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using SosuPower.DataAccess;
+using SosuPower.Entities;
 
 namespace SosuPower.Api
 {
@@ -19,8 +20,7 @@ namespace SosuPower.Api
                 )
             );
 
-            //builder.Services.AddScoped<DbContext, Repository<Entities.Task>>();
-            builder.Services.AddScoped<IRepository<Entities.Task>, Repository<Entities.Task>>();
+            builder.Services.AddScoped<IRepository<Assignment>, Repository<Assignment>>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

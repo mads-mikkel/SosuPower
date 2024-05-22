@@ -9,27 +9,27 @@ namespace SosuPower.Api.Controllers
     [Route("[controller]")]
     public class TaskController: Controller
     {
-        private readonly IRepository<Entities.Task> repository;
+        private readonly IRepository<Entities.Assignment> repository;
 
-        public TaskController(IRepository<Entities.Task> repository)
+        public TaskController(IRepository<Entities.Assignment> repository)
         {
             this.repository = repository;
         }
 
         [HttpGet(nameof(GetBy))]
-        public ActionResult<Entities.Task> GetBy(int id)
+        public ActionResult<Entities.Assignment> GetBy(int id)
         {
             return repository.GetBy(id);
         }
 
         [HttpGet(nameof(GetTasksFor))]
-        public IEnumerable<Entities.Task> GetTasksFor(DateTime date = default)
+        public IEnumerable<Entities.Assignment> GetTasksFor(DateTime date = default)
         {
             return default;
         }
 
         [HttpPost]
-        public void AddNew(Entities.Task task)
+        public void AddNew(Entities.Assignment task)
         {
             repository.Add(task);
         }
