@@ -19,6 +19,9 @@ namespace SosuPower.Api
                 )
             );
 
+            //builder.Services.AddScoped<DbContext, Repository<Entities.Task>>();
+            builder.Services.AddScoped<IRepository<Entities.Task>, Repository<Entities.Task>>();
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
