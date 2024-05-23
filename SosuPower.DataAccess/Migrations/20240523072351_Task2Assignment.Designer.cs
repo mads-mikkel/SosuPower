@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuPower.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuPower.DataAccess;
 namespace SosuPower.DataAccess.Migrations
 {
     [DbContext(typeof(SosuPowerContext))]
-    partial class SosuPowerContextModelSnapshot : ModelSnapshot
+    [Migration("20240523072351_Task2Assignment")]
+    partial class Task2Assignment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,27 +111,6 @@ namespace SosuPower.DataAccess.Migrations
                     b.ToTable("Residents");
                 });
 
-            modelBuilder.Entity("SosuPower.Entities.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Role");
-                });
-
             modelBuilder.Entity("AssignmentEmployee", b =>
                 {
                     b.HasOne("SosuPower.Entities.Assignment", null)
@@ -151,18 +133,6 @@ namespace SosuPower.DataAccess.Migrations
                         .HasForeignKey("ResidentId");
 
                     b.Navigation("Resident");
-                });
-
-            modelBuilder.Entity("SosuPower.Entities.Role", b =>
-                {
-                    b.HasOne("SosuPower.Entities.Employee", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("EmployeeId");
-                });
-
-            modelBuilder.Entity("SosuPower.Entities.Employee", b =>
-                {
-                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 using SosuPower.DataAccess;
 using SosuPower.Entities;
@@ -36,12 +35,6 @@ namespace SosuPower.Api.Controllers
         public IEnumerable<Assignment> GetAssignmentsForEmployee([FromQuery] Employee employee)
         {
             return repository.GetAssignmentsFor(employee);
-        }
-
-        [HttpGet(nameof(GetAssignmentsForEmployeeByName))]
-        public IEnumerable<Assignment> GetAssignmentsForEmployeeByName(string name)
-        {
-            return repository.GetAssignmentsFor(name);
         }
 
         [HttpPost]
