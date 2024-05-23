@@ -21,5 +21,12 @@ namespace SosuPower.DataAccess
     public interface IAssignmentRepository : IRepository<Assignment>
     {
         IEnumerable<Assignment> GetAssignmentsOn(DateTime date);
+        IEnumerable<Assignment> GetAssignmentsFor(Employee employee);
+        IEnumerable<Assignment> GetAssignmentsFor(string employeeName);
+    }
+
+    public interface IEmployeeRepository : IRepository<Employee>
+    {
+
     }
 }

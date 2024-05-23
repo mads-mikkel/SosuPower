@@ -24,10 +24,24 @@ namespace SosuPower.Api.Controllers
             return repository.GetBy(id);
         }
 
-        [HttpGet(nameof(GetTasksFor))]
-        public IEnumerable<Assignment> GetTasksFor(DateTime date = default)
+        [HttpGet(nameof(GetAssignmentsByDate))]
+        public IEnumerable<Assignment> GetAssignmentsByDate(DateTime date = default)
         {
+            if(date == default)
+                date = DateTime.Now;
             return repository.GetAssignmentsOn(date);
+        }
+
+        [HttpGet(nameof(GetAssignmentsForEmployee))]
+        public IEnumerable<Assignment> GetAssignmentsForEmployee([FromQuery] Employee employee)
+        {
+            return repository.GetAssignmentsFor(employee);
+        }
+
+        [HttpGet(nameof(GetAssignmentsForEmployeeByName))]
+        public IEnumerable<Assignment> GetAssignmentsForEmployeeByName(string name)
+        {
+            return repository.GetAssignmentsFor(name);
         }
 
         [HttpPost]
