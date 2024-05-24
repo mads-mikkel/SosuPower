@@ -21,6 +21,8 @@ namespace SosuPower.Api
             );
 
             builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<IRepository<Resident>, Repository<Resident>>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,11 +1,5 @@
 ﻿using SosuPower.Entities;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SosuPower.DataAccess
 {
     public interface IRepository<T>
@@ -18,14 +12,16 @@ namespace SosuPower.DataAccess
         T GetBy(int id);
     }
 
-    public interface IAssignmentRepository : IRepository<Assignment>
+    public interface IAssignmentRepository: IRepository<Assignment>
     {
         IEnumerable<Assignment> GetAssignmentsOn(DateTime date);
         IEnumerable<Assignment> GetAssignmentsFor(Employee employee);
     }
 
-    public interface IEmployeeRepository : IRepository<Employee>
+    public interface IEmployeeRepository: IRepository<Employee>
     {
-
+        IEnumerable<Employee> GetEmployeesIn(Assignment assignment);
     }
+
+    //public interface IResidentRepository: IRepository<Resident> { }
 }

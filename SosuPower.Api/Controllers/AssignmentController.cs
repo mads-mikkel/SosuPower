@@ -6,7 +6,7 @@ using SosuPower.Entities;
 namespace SosuPower.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AssignmentController(IAssignmentRepository repository): Controller
     {
         private readonly IAssignmentRepository repository = repository;
@@ -38,19 +38,19 @@ namespace SosuPower.Api.Controllers
         }
 
         [HttpPost]
-        public void AddNew(Assignment task)
+        public void AddNew([FromQuery] Assignment task)
         {
             repository.Add(task);
         }
 
         [HttpPut]
-        public void Update(Assignment assignment)
+        public void Update([FromBody] Assignment assignment)
         {
             repository.Update(assignment);
         }
 
-        [HttpDelete("DeleteById")]
-        public void Delete(int id) 
+        [HttpDelete(nameof(DeleteById))]
+        public void DeleteById(int id) 
         {
             repository.Delete(id);
         }
