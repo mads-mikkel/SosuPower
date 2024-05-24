@@ -45,15 +45,9 @@ namespace SosuPower.Api.Controllers
         }
 
         [HttpPut]
-        public void Update()
-        {
-            // for test only:
-            var ida = employeeRepository.GetBy(2006);
-            var mia = employeeRepository.GetBy(2007);
-            var ass = repository.GetBy(1002);
-            ass.Employees.Add(ida);
-            ass.Employees.Add(mia);
-            repository.Update(ass);
+        public void Update(Assignment assignment)
+        {                        
+            repository.Update(assignment);
         }
 
         [HttpDelete(nameof(DeleteById))]
