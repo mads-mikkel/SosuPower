@@ -32,7 +32,7 @@
             return sosuPowerContext.Set<T>().ToList();
         }
 
-        public T GetBy(int id)
+        public virtual T GetBy(int id)
         {
             return sosuPowerContext.Set<T>().Find(id);
         }
@@ -40,6 +40,7 @@
         public void Update(T entity)
         {
             sosuPowerContext.Update(entity);
+            sosuPowerContext.SaveChanges();
         }
     }
 }

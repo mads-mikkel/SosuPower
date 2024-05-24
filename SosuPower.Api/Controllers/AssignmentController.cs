@@ -7,9 +7,10 @@ namespace SosuPower.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AssignmentController(IAssignmentRepository repository): Controller
+    public class AssignmentController(IAssignmentRepository repository, IEmployeeRepository employeeRepository): Controller
     {
         private readonly IAssignmentRepository repository = repository;
+        private readonly IEmployeeRepository employeeRepository = employeeRepository;
 
         [HttpGet]
         public IEnumerable<Assignment> GetAll()
@@ -44,9 +45,15 @@ namespace SosuPower.Api.Controllers
         }
 
         [HttpPut]
-        public void Update([FromBody] Assignment assignment)
+        public void Update()
         {
-            repository.Update(assignment);
+            // for test only:
+            var ida = employeeRepository.GetBy(2006);
+            var mia = employeeRepository.GetBy(2007);
+            var ass = repository.GetBy(1002);
+            ass.Employees.Add(ida);
+            ass.Employees.Add(mia);
+            repository.Update(ass);
         }
 
         [HttpDelete(nameof(DeleteById))]

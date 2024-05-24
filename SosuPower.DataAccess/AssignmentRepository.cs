@@ -16,5 +16,10 @@ namespace SosuPower.DataAccess
         {
             return sosuPowerContext.Tasks.Where(a => a.StartTime == date.Date);
         }
+
+        public override Assignment GetBy(int id)
+        {
+            return sosuPowerContext.Tasks.Include(a => a.Employees).FirstOrDefault(a => a.Id == id);
+        }
     }
 }
