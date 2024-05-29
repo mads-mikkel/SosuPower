@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 
+using SosuPower.CareApp.ViewModels;
+using SosuPower.CareApp.Views;
+
 namespace SosuPower.CareApp
 {
     public static class MauiProgram
@@ -14,6 +17,9 @@ namespace SosuPower.CareApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddSingleton<MainPage>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

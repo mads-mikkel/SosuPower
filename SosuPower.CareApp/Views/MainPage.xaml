@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:SosuPower.Entities;assembly=SosuPower.Entities"
              xmlns:converters="clr-namespace:SosuPower.CareApp.Converters"
+             xmlns:viewModel="clr-namespace:SosuPower.CareApp.ViewModels"
+             x:DataType="viewModel:MainPageViewModel"
              x:Class="SosuPower.CareApp.Views.MainPage">
 
     <ContentPage.Resources>
@@ -37,7 +39,8 @@
                Padding="0" />
         <CollectionView BackgroundColor="AliceBlue"
                         Grid.Row="2"
-                        Grid.RowSpan="2">
+                        Grid.RowSpan="2"
+                        ItemsSource="{Binding TodaysAssignments}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Assignment">
                     <Grid Padding="10">
@@ -60,7 +63,7 @@
                                 <Label Text="Room X"
                                        Grid.Row="0"
                                        Grid.Column="2" />
-                                <Label Text="Beboer Navn Navnesen"
+                                <Label Text="{Binding Resident.Name}"
                                        Grid.Row="1"
                                        Grid.ColumnSpan="3" />
                                 <CheckBox Grid.Column="2"

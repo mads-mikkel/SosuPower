@@ -5,6 +5,11 @@
         public MainPage()
         {
             InitializeComponent();
-        }        
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }
