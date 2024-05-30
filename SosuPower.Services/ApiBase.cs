@@ -1,4 +1,6 @@
-﻿using SosuPower.Entities;
+﻿using Azure.Core;
+
+using SosuPower.Entities;
 
 using System.Net;
 using System.Net.Http.Json;
@@ -16,6 +18,19 @@ namespace SosuPower.Services
         }
 
         protected ApiBase(string uri) : this(new Uri(uri)) { }
+
+        protected virtual async Task<HttpResponseMessage> GetHttpAsync(string url) 
+        {
+            // Byg en URI for at sikre os at URL'en er korrekt.
+            Uri uri = new("");
+
+            // kald API'et
+            using HttpClient client = new HttpClient();
+            var response = await client.GetAsync(uri);
+
+            // returner resultatet til kalderen
+            return response;
+        }
     }
 
     public class SosuService: ApiBase, ISosuService
@@ -25,15 +40,10 @@ namespace SosuPower.Services
 
         public async Task<List<Assignment>> GetAssignmentsForAsync(DateTime date, Employee employee)
         {
-            UriBuilder uriBuilder = new UriBuilder(baseUri);
-            uriBuilder.Path = "api/Assignment";//GetAssignmentsForEmployeeByDate";
-            using HttpClient client = new();
-            client.BaseAddress = uriBuilder.Uri;
-
-            var response = await client.GetAsync("https://localhost:7006/api/Assignment"/*uriBuilder.Uri.AbsoluteUri*/);
+            string url = "";
+            var response = await GetHttpAsync(url);
             var result = response.Content.ReadFromJsonAsAsyncEnumerable<Assignment>();
             List<Assignment> assignments = await result.ToListAsync();
-
             return assignments;
         }
     }
