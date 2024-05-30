@@ -15,12 +15,13 @@ namespace SosuPower.CareApp.ViewModels
         {
             Title = "FORSIDEN";
             this.sosuService = sosuService;
-        }
+            UpdateAssignments();
+        }        
 
-        private void UpdateAssignments()
+        private async Task UpdateAssignments()
         {
             TodaysAssignments.Clear();
-            var result = sosuService.GetAssignmentsFor(DateTime.Now, new Employee() { Id = 2 });
+            var result = await sosuService.GetAssignmentsForAsync(DateTime.Now, new Employee() { Id = 2 });
             foreach (var assignment in result)
             {
                 TodaysAssignments.Add(assignment);

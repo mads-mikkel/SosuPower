@@ -8,7 +8,7 @@ namespace SosuPower.CareApp
 {
     public static class MauiProgram
     {
-        private const string url = "https://localhost:7006/api/";
+        private const string url = "https://localhost:7006/";
 
         public static MauiApp CreateMauiApp()
         {

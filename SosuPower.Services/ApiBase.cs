@@ -1,5 +1,6 @@
 ﻿using SosuPower.Entities;
 
+using System.Net;
 using System.Net.Http.Json;
 
 
@@ -22,16 +23,16 @@ namespace SosuPower.Services
         public SosuService(Uri baseUri) : base(baseUri) { }
         public SosuService(string baseUri) : base(baseUri) { }
 
-        public List<Assignment> GetAssignmentsFor(DateTime date, Employee employee)
+        public async Task<List<Assignment>> GetAssignmentsForAsync(DateTime date, Employee employee)
         {
             UriBuilder uriBuilder = new UriBuilder(baseUri);
-            uriBuilder.Path = "Assignment/GetAssignmentsForEmployeeByDate";
+            uriBuilder.Path = "api/Assignment";//GetAssignmentsForEmployeeByDate";
             using HttpClient client = new();
             client.BaseAddress = uriBuilder.Uri;
 
-            var response = client.GetAsync(uriBuilder.Uri.AbsoluteUri).Result;
+            var response = await client.GetAsync("https://localhost:7006/api/Assignment"/*uriBuilder.Uri.AbsoluteUri*/);
             var result = response.Content.ReadFromJsonAsAsyncEnumerable<Assignment>();
-            List<Assignment> assignments = result.ToListAsync().Result;
+            List<Assignment> assignments = await result.ToListAsync();
 
             return assignments;
         }
@@ -39,6 +40,6 @@ namespace SosuPower.Services
 
     public interface ISosuService
     {
-        List<Assignment> GetAssignmentsFor(DateTime date, Employee employee);
+        Task<List<Assignment>> GetAssignmentsForAsync(DateTime date, Employee employee);
     }
 }
