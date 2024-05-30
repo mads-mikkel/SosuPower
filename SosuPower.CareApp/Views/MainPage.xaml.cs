@@ -1,10 +1,13 @@
-﻿namespace SosuPower.CareApp.Views
+﻿using SosuPower.CareApp.ViewModels;
+
+namespace SosuPower.CareApp.Views
 {
     public partial class MainPage: ContentPage
     {
-        public MainPage()
+        public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
+            BindingContext = viewModel;
         }
 
         protected override void OnAppearing()

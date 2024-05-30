@@ -37,9 +37,9 @@
                Grid.ColumnSpan="2"
                Margin="5"
                Padding="0" />
-        <CollectionView BackgroundColor="AliceBlue"
+        <CollectionView BackgroundColor="LightBlue"
                         Grid.Row="2"
-                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="2"
                         ItemsSource="{Binding TodaysAssignments}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Assignment">

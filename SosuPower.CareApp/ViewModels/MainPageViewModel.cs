@@ -29,9 +29,59 @@ namespace SosuPower.CareApp.ViewModels
                 StartTime = new(2024, 01, 01, 15, 30, 00),
                 EndTime = new(2024, 01, 01, 16, 30, 00)
             };
+            var c = new Assignment
+            {
+                Resident = new()
+                {
+                    Name = "Morten Skildpadde"
+                },
+                StartTime = new(2024, 01, 01, 12, 00, 00),
+                EndTime = new(2024, 01, 01, 12, 30, 00)
+            };
+            var d = new Assignment
+            {
+                Resident = new()
+                {
+                    Name = "Søren Banjomus"
+                },
+                StartTime = new(2024, 01, 01, 15, 30, 00),
+                EndTime = new(2024, 01, 01, 16, 30, 00)
+            };
+            var e = new Assignment
+            {
+                Resident = new()
+                {
+                    Name = "Helle Helle"
+                },
+                StartTime = new(2024, 01, 01, 15, 30, 00),
+                EndTime = new(2024, 01, 01, 16, 30, 00)
+            };
+            var f = new Assignment
+            {
+                Resident = new()
+                {
+                    Name = "Katrine Pandekage"
+                },
+                StartTime = new(2024, 01, 01, 15, 30, 00),
+                EndTime = new(2024, 01, 01, 16, 30, 00)
+            };
+            var g = new Assignment
+            {
+                Resident = new()
+                {
+                    Name = "Karen Von Memes"
+                },
+                StartTime = new(2024, 01, 01, 15, 30, 00),
+                EndTime = new(2024, 01, 01, 16, 30, 00)
+            };
 
             TodaysAssignments.Add(a);
             TodaysAssignments.Add(b);
+            TodaysAssignments.Add(c);
+            TodaysAssignments.Add(d);
+            TodaysAssignments.Add(e);
+            TodaysAssignments.Add(f);
+            TodaysAssignments.Add(g);
         }
 
 
