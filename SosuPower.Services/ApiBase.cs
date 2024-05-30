@@ -1,5 +1,8 @@
 ﻿using SosuPower.Entities;
 
+using System.Net.Http.Json;
+
+
 namespace SosuPower.Services
 {
     public abstract class ApiBase
@@ -25,10 +28,12 @@ namespace SosuPower.Services
             uriBuilder.Path = "Assignment/GetAssignmentsForEmployeeByDate";
             using HttpClient client = new();
             client.BaseAddress = uriBuilder.Uri;
-            
 
-                // call api here
-                return default;
+            var response = client.GetAsync(uriBuilder.Uri.AbsoluteUri).Result;
+            var result = response.Content.ReadFromJsonAsAsyncEnumerable<Assignment>();
+            List<Assignment> assignments = result.ToListAsync().Result;
+
+            return assignments;
         }
     }
 
