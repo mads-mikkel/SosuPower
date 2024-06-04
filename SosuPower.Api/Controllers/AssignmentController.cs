@@ -25,11 +25,9 @@ namespace SosuPower.Api.Controllers
         }
 
         [HttpGet(nameof(GetAssignmentsForEmployeeByDate))]
-        public IEnumerable<Assignment> GetAssignmentsForEmployeeByDate(Employee employee, DateTime date = default)
+        public IEnumerable<Assignment> GetAssignmentsForEmployeeByDate(int employeeId, DateTime date = default)
         {
-            if(date == default)
-                date = DateTime.Now;
-            return repository.GetAssignmentsOn(date);
+            return repository.GetAssignmentsForEmplyeeByDate(employeeId, date);
         }
 
         [HttpGet(nameof(GetAssignmentsForEmployee))]

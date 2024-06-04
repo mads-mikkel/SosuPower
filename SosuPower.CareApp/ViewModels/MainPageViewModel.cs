@@ -14,17 +14,18 @@ namespace SosuPower.CareApp.ViewModels
         public MainPageViewModel(ISosuService sosuService)
         {
             Title = "FORSIDEN";
-            this.sosuService = sosuService;
+            this.sosuService = sosuService;            
             UpdateAssignments();
         }        
 
-        private async Task UpdateAssignments()
+        private async void UpdateAssignments()
         {
             TodaysAssignments.Clear();
-            var result = await sosuService.GetAssignmentsForAsync(DateTime.Now, new Employee() { Id = 2 });
+            
+            var result = await sosuService.GetAssignmentsForAsync(new DateTime(2024,05,24), new Employee() { Id = 2008 });
             foreach (var assignment in result)
             {
-                TodaysAssignments.Add(assignment);
+                TodaysAssignments.Add(assignment);                
             }
         }
     }

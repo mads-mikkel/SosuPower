@@ -12,6 +12,12 @@ namespace SosuPower.DataAccess
             return sosuPowerContext.Tasks.Where(a => a.Employees.Contains(employee));
         }
 
+        public IEnumerable<Assignment> GetAssignmentsForEmplyeeByDate(int employeeId, DateTime date)
+        {
+            Employee employee = sosuPowerContext.Employees.Find(employeeId);
+            return sosuPowerContext.Tasks.Where(a => a.Employees.Contains(employee) && a.StartTime.Date == date.Date).ToList();
+        }
+
         public IEnumerable<Assignment> GetAssignmentsOn(DateTime date)
         {
             return sosuPowerContext.Tasks.Where(a => a.StartTime == date.Date);

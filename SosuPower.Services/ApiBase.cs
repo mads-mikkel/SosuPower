@@ -22,7 +22,8 @@ namespace SosuPower.Services
         protected virtual async Task<HttpResponseMessage> GetHttpAsync(string url) 
         {
             // Byg en URI for at sikre os at URL'en er korrekt.
-            Uri uri = new("");
+            url = "/api/" + url;
+            Uri uri = new(baseUri, url);
 
             // kald API'et
             using HttpClient client = new HttpClient();
@@ -40,7 +41,8 @@ namespace SosuPower.Services
 
         public async Task<List<Assignment>> GetAssignmentsForAsync(DateTime date, Employee employee)
         {
-            string url = "";
+            //GetAssignmentsForEmployeeByDate?employeeId=2&date=2024-01-01
+            string url = $"Assignment/GetAssignmentsForEmployeeByDate?employeeId={employee.Id}&date={date.ToString("yyyy-MM-dd")}"; // <-- refactor action method.
             var response = await GetHttpAsync(url);
             var result = response.Content.ReadFromJsonAsAsyncEnumerable<Assignment>();
             List<Assignment> assignments = await result.ToListAsync();
